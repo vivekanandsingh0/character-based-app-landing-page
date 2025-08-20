@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Character Social Network — Build Your Aura, Not Followers</title>
+  <meta name="description" content="A new, action‑first social network where your real‑life actions level up your traits and aura. Join the early access waitlist." />
+  <meta name="theme-color" content="#0f172a" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Character Social Network — Action‑First Social Media" />
+  <meta property="og:description" content="Your aura grows with actions, not likes. Join the movement." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://your-domain.com" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Character Social Network — Action‑First Social Media" />
+  <meta name="twitter:description" content="Your aura grows with actions, not likes. Join the movement." />
+  <meta name="twitter:image" content="/og-image.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020; /* slate-950 */
+      --panel: #0f172a; /* slate-900 */
+      --muted: #94a3b8; /* slate-400 */
+      --text: #e2e8f0; /* slate-200 */
+      --brand: #7c3aed; /* violet-600 */
+      --brand-2: #22d3ee; /* cyan-400 */
+      --accent: #a78bfa; /* violet-300 */
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --ring: 0 0 0 8px rgb(124 58 237 / 0.15);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgb(2 6 23 / 0.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.15), transparent 60%), radial-gradient(900px 400px at -10% 10%, rgba(34,211,238,.15), transparent 60%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Layout */
+    .container{width:min(1200px, 92%); margin-inline:auto}
+    .grid{display:grid; gap:24px}
+
+    /* Navbar */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(180deg, rgba(10,15,30,.8), rgba(10,15,30,.55)); border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--accent), var(--brand)); box-shadow:0 0 40px rgba(124,58,237,.35)}
+    .nav a{opacity:.9}
+    .nav-links{display:flex; gap:20px; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); padding:12px 16px; border-radius:12px; transition:.3s; font-weight:600}
+    .btn:hover{transform:translateY(-1px); border-color:rgba(167,139,250,.7); box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), #6d28d9); border-color:transparent}
+    .btn-primary:hover{box-shadow:0 10px 30px rgba(124,58,237,.45)}
+
+    /* Hero */
+    .hero{padding:64px 0 48px; position:relative}
+    .hero .container{display:grid; grid-template-columns: 1.2fr 1fr; gap:40px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(167,139,250,.35); background:rgba(124,58,237,.12); border-radius:999px; color:#e9d5ff; font-weight:600; letter-spacing:.2px}
+    .title{font-family:Outfit, Inter, sans-serif; font-size: clamp(34px, 6vw, 64px); line-height:1.05; margin:16px 0 8px}
+    .subtitle{font-size: clamp(16px, 2.3vw, 20px); color:var(--muted)}
+    .hero-cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+    .stats{display:flex; gap:22px; margin-top:26px; flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); padding:12px 16px; border-radius:12px; font-weight:700}
+
+    .illustration{position:relative; aspect-ratio: 4 / 3; border-radius:20px; border:1px solid rgba(148,163,184,.18); overflow:hidden; background:radial-gradient(800px 500px at 30% 10%, rgba(167,139,250,.18), transparent 50%), linear-gradient(180deg, rgba(2,6,23,.8), rgba(2,6,23,.4)); box-shadow:var(--shadow)}
+    .orbs{position:absolute; inset:0; pointer-events:none}
+    .orb{position:absolute; width:160px; height:160px; border-radius:50%; filter:blur(30px); opacity:.6}
+    .orb.p1{left:-40px; top:10%; background:#22d3ee44}
+    .orb.p2{right:-30px; bottom:10%; background:#7c3aed44}
+    .orb.p3{left:40%; top:-40px; background:#a78bfa33}
+    .hero-mock{position:absolute; inset:20px; border-radius:14px; background:rgba(2,6,23,.6); border:1px solid rgba(148,163,184,.25); padding:16px; display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .mock-card{border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); padding:12px}
+    .chip{display:inline-flex; gap:8px; align-items:center; background:rgba(124,58,237,.18); color:#ddd6fe; border:1px solid rgba(167,139,250,.4); padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700}
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-title{font-family:Outfit, Inter, sans-serif; font-size: clamp(26px, 3.2vw, 42px); margin:0 0 8px}
+    .section-desc{color:var(--muted); max-width:800px}
+
+    .feature-grid{display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:18px; margin-top:28px}
+    .feature{border:1px solid rgba(148,163,184,.18); background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); border-radius:16px; padding:18px; position:relative; overflow:hidden}
+    .feature .icon{width:40px; height:40px; display:grid; place-items:center; border-radius:12px; background:rgba(124,58,237,.2); border:1px solid rgba(167,139,250,.35); margin-bottom:10px}
+    .feature h4{margin:6px 0 6px}
+    .feature p{color:var(--muted)}
+    .feature::after{content:""; position:absolute; inset:auto -30% -40% auto; width:240px; height:240px; background:radial-gradient(closest-side, rgba(124,58,237,.15), transparent 70%)}
+
+    /* How it works */
+    .steps{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-top:26px}
+    .step{background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); border-radius:16px; padding:18px}
+
+    /* Creator & User blocks */
+    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:start}
+    .card{border:1px solid rgba(148,163,184,.18); background:rgba(255,255,255,.03); border-radius:16px; padding:20px}
+
+    /* Roadmap */
+    .timeline{position:relative; margin-top:24px}
+    .timeline::before{content:""; position:absolute; left:20px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, var(--brand), transparent)}
+    .milestone{display:grid; grid-template-columns:46px 1fr; gap:12px; padding:10px 0}
+    .dot{width:16px; height:16px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 6px rgba(124,58,237,.18); margin-top:4px}
+
+    /* CTA band */
+    .cta{background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.2)); border:1px solid rgba(148,163,184,.25); border-radius:20px; padding:22px; display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center}
+    .input{display:flex; gap:10px}
+    input[type=email]{flex:1; padding:14px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:rgba(2,6,23,.6); color:var(--text)}
+    input[type=email]:focus{outline:none; box-shadow:var(--ring); border-color:#a78bfa}
+
+    /* FAQ */
+    .faq{display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:20px}
+    .faq-item{border:1px solid rgba(148,163,184,.2); border-radius:14px; background:rgba(255,255,255,.03); overflow:hidden}
+    .faq-q{padding:16px 18px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center}
+    .faq-a{padding:0 18px 16px; color:var(--muted); display:none}
+
+    /* Footer */
+    footer{padding:40px 0 60px; border-top:1px solid rgba(148,163,184,.15); color:#94a3b8}
+    .footer-grid{display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:18px}
+    .legal{font-size:12px; color:#64748b; margin-top:16px}
+
+    /* Utilities */
+    .tag{display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px; background:rgba(34,211,238,.12); border:1px solid rgba(34,211,238,.35); color:#cffafe; font-weight:700; font-size:12px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(148,163,184,.2)}
+    .muted{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .container{grid-template-columns:1fr}
+      .cta{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .feature-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .feature-grid, .steps, .faq, .footer-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .hero{padding-top:36px}
+    }
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform:translateY(12px); transition:.7s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Toast */
+    .toast{position:fixed; right:16px; bottom:16px; background:rgba(2,6,23,.88); color:var(--text); padding:12px 16px; border-radius:12px; border:1px solid rgba(148,163,184,.2); box-shadow:var(--shadow); display:none}
+    .toast.show{display:block}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Character Social</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#mission">Mission</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#creators">Creators</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="badge">🚀 New Age Social • Action‑First</span>
+        <h1 class="title">Build Your <span style="color:var(--accent)">Aura</span>, Not Followers.</h1>
+        <p class="subtitle">A social network where your real actions level up your traits. No fake likes. No follower chase. Just authentic growth — together.</p>
+        <div class="hero-cta">
+          <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
+          <a href="#features" class="btn">See Features</a>
+        </div>
+        <div class="stats">
+          <div class="stat">10k+ actions logged in beta</div>
+          <div class="stat">100+ creator tribes forming</div>
+          <div class="stat">Backed by community mentors</div>
+        </div>
+      </div>
+      <div class="illustration" aria-hidden="true">
+        <div class="orbs">
+          <span class="orb p1"></span>
+          <span class="orb p2"></span>
+          <span class="orb p3"></span>
+        </div>
+        <div class="hero-mock">
+          <div class="mock-card">
+            <span class="chip">🌱 Growth Aura</span>
+            <p class="muted" style="margin-top:10px">Your aura brightened after today’s mission.</p>
+          </div>
+          <div class="mock-card">
+            <span class="chip" style="background:rgba(34,197,94,.18); border-color:rgba(34,197,94,.4); color:#bbf7d0">🤝 Tribe Goal</span>
+            <p class="muted" style="margin-top:10px">Travel Tribe hit 80% of the weekly challenge.</p>
+          </div>
+          <div class="mock-card">
+            <span class="chip" style="background:rgba(34,211,238,.18); border-color:rgba(34,211,238,.4); color:#cffafe">🔥 Mission</span>
+            <p class="muted" style="margin-top:10px">Share one unfiltered moment from today.</p>
+          </div>
+          <div class="mock-card">
+            <span class="chip" style="background:rgba(250,204,21,.18); border-color:rgba(250,204,21,.4); color:#fef08a">🎖️ Badge</span>
+            <p class="muted" style="margin-top:10px">7‑day streak unlocked — Discipline Rising.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission / Vision -->
+  <section id="mission">
+    <div class="container reveal">
+      <h2 class="section-title">Mission & Vision</h2>
+      <p class="section-desc">We’re building a character‑first social network where people act, not just watch. Every post boosts traits like Creativity, Wisdom, Discipline, and Empathy. Your profile is a living avatar with a dynamic aura — a visual story of who you’re becoming. Together, tribes complete missions that make life better — for you and your community.</p>
+      <div class="feature-grid" style="margin-top:22px">
+        <div class="feature">
+          <div class="icon">✨</div>
+          <h4>Action over Attention</h4>
+          <p>Goodbye like‑farming. We reward meaningful actions and reflections.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🎮</div>
+          <h4>RPG‑style Growth</h4>
+          <p>Level up traits and unlock aura skins as you complete missions.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🫶</div>
+          <h4>Tribe Belonging</h4>
+          <p>Communities with goals, not just groups with followers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container reveal">
+      <h2 class="section-title">What makes us different</h2>
+      <p class="section-desc">Aura > Likes. Traits > Follower counts. Missions > Passive scrolling.</p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="icon">🪪</div>
+          <h4>Dynamic Character Profiles</h4>
+          <p>Your avatar & aura evolve with your real‑world actions.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🌈</div>
+          <h4>Live Aura</h4>
+          <p>Visual glow that changes as you create, help, learn, or train.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🎯</div>
+          <h4>Missions & Quests</h4>
+          <p>Daily prompts and tribe challenges that spark real engagement.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🧭</div>
+          <h4>Vibe Map</h4>
+          <p>See what the world (or your city) is doing right now.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🎨</div>
+          <h4>Cosmetics, not Clout</h4>
+          <p>Flex with collectible skins and badges — not vanity numbers.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">💸</div>
+          <h4>Creator‑Friendly</h4>
+          <p>Run missions, sell guides, host premium tribes. Direct support from fans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <div class="container reveal">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-desc">A simple loop that builds habits and community.</p>
+      <div class="steps">
+        <div class="step"><span class="pill">1 • Pick your tribe</span><h4>Find your people</h4><p class="muted">Join communities that match your vibe: fitness, study, music, kindness…</p></div>
+        <div class="step"><span class="pill">2 • Take missions</span><h4>Act, don’t scroll</h4><p class="muted">Complete daily/weekly challenges. Post proof, reflect, earn trait boosts.</p></div>
+        <div class="step"><span class="pill">3 • Evolve</span><h4>Grow your aura</h4><p class="muted">Watch your profile glow and unlock cosmetics as your habits stick.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creators & Users -->
+  <section id="creators">
+    <div class="container reveal two-col">
+      <div class="card">
+        <span class="tag">For Creators</span>
+        <h3 style="margin:10px 0">Own your tribe. Earn without ads.</h3>
+        <ul class="muted">
+          <li>• Launch paid missions and premium communities.</li>
+          <li>• Sell digital guides, templates, or plans.</li>
+          <li>• Get real engagement metrics (mission completion, aura impact).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag" style="background:rgba(124,58,237,.15); border-color:rgba(124,58,237,.35); color:#ddd6fe">For Users</span>
+        <h3 style="margin:10px 0">Make social media good for you.</h3>
+        <ul class="muted">
+          <li>• Replace mindless scroll with fun missions.</li>
+          <li>• Build real traits you can be proud of.</li>
+          <li>• Flex with aura skins, not follower counts.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <div class="container reveal">
+      <h2 class="section-title">Roadmap</h2>
+      <p class="section-desc">Transparent milestones from alpha to global launch.</p>
+      <div class="timeline">
+        <div class="milestone">
+          <div class="dot"></div>
+          <div>
+            <h4>Alpha (Now)</h4>
+            <p class="muted">Closed testing with early users. Core loop: missions, aura, tribes.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="dot"></div>
+          <div>
+            <h4>Beta (Q4)</h4>
+            <p class="muted">Creator tools, cosmetic shop, vibe map, waitlist invites.</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="dot"></div>
+          <div>
+            <h4>Launch (Q1)</h4>
+            <p class="muted">Open access, brand missions, premium tribes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Waitlist -->
+  <section id="waitlist">
+    <div class="container reveal">
+      <div class="cta">
+        <div>
+          <h3 class="section-title" style="margin:0">Join the early access</h3>
+          <p class="section-desc">Be part of the founding wave. Get invites, updates, and a founding badge at launch.</p>
+        </div>
+        <form id="waitlist-form" class="input" novalidate>
+          <input id="email" type="email" placeholder="Enter your email" aria-label="Email address" required />
+          <button class="btn btn-primary" type="submit">Join Waitlist</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container reveal">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq" id="faq">
+        <div class="faq-item">
+          <div class="faq-q">How is this different from Instagram?<span>＋</span></div>
+          <div class="faq-a">No likes or follower chasing. We reward actions and reflections. Your aura shows growth, not clout.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this free?<span>＋</span></div>
+          <div class="faq-a">Yes for core features. Optional cosmetics and premium tribes support creators.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do creators earn?<span>＋</span></div>
+          <div class="faq-a">Paid missions, premium tribes, tips, and digital product sales — all within the app.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">When can I try it?<span>＋</span></div>
+          <div class="faq-a">Join the waitlist. We’re inviting users in waves during alpha/beta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="logo"></span><span>Character Social</span></div>
+        <p class="legal">© <span id="year"></span> Character Social. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#mission">Mission</a><br />
+        <a href="#features">Features</a><br />
+        <a href="#roadmap">Roadmap</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@your-domain.com">Email</a><br />
+        <a href="#waitlist">Join Waitlist</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Thanks! You’re on the list 🎉</div>
+
+  <script>
+    // Intersection reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement; const a = item.querySelector('.faq-a');
+        const open = a.style.display === 'block';
+        document.querySelectorAll('.faq-a').forEach(x => x.style.display = 'none');
+        document.querySelectorAll('.faq-q span').forEach(x => x.textContent = '＋');
+        if (!open){ a.style.display = 'block'; q.querySelector('span').textContent = '–'; }
+      })
+    })
+
+    // Waitlist form (frontend only)
+    const form = document.getElementById('waitlist-form');
+    const emailInput = document.getElementById('email');
+    const toast = document.getElementById('toast');
+
+    function validateEmail(v){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!validateEmail(email)){
+        emailInput.focus();
+        emailInput.style.borderColor = 'var(--danger)';
+        emailInput.setAttribute('aria-invalid', 'true');
+        return;
+      }
+      emailInput.style.borderColor = 'var(--accent)';
+
+      // Local fallback storage
+      try{
+        const list = JSON.parse(localStorage.getItem('waitlist') || '[]');
+        if (!list.includes(email)) list.push(email);
+        localStorage.setItem('waitlist', JSON.stringify(list));
+      }catch(err){ console.warn('Local storage failed', err); }
+
+      // OPTIONAL: send to your backend or a form service
+      // await fetch('https://your-api.com/waitlist', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email })});
+
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      form.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

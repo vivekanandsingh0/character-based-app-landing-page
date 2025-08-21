@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Character Social Network — Internship</title>
+  <meta name="description" content="Internship opportunities at Character Social Network." />
+  <meta name="theme-color" content="#0f172a" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Character Social Network — Internship" />
+  <meta property="og:description" content="Join our team and build the future of social networking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://your-domain.com/internship" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Character Social Network — Internship" />
+  <meta name="twitter:description" content="Join our team and build the future of social networking." />
+  <meta name="twitter:image" content="/og-image.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #12182B; /* Slightly darker background */
+      --panel: #1E253A; /* Darker panel for contrast */
+      --muted: #A3B1C6; /* Softer muted color */
+      --text: #F0F4EF; /* Off-white text for readability */
+      --brand: #8B5CF6; /* More vibrant violet */
+      --brand-2: #6EE7B7; /* A teal-ish secondary brand color */
+      --accent: #C4B5FD; /* Lighter accent color */
+      --success: #65A30D;
+      --warning: #FACC15;
+      --danger: #EF4444;
+      --ring: 0 0 0 4px rgba(139, 92, 246, 0.15); /* Softer ring */
+      --radius: 12px;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Less intense shadow */
+    }
+
+    /* Add a vibrant accent color for key elements */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+
+    /* Subtle animation for the hero section */
+    .hero {
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Add a subtle hover effect to the feature cards */
+    .feature:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; background:radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.15), transparent 60%), radial-gradient(900px 400px at -10% 10%, rgba(34,211,238,.15), transparent 60%), var(--bg); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Layout */
+    .container{width:min(1200px, 92%); margin-inline:auto}
+    .grid{display:grid; gap:24px}
+
+    /* Navbar */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient(180deg, rgba(10,15,30,.8), rgba(10,15,30,.55)); border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--accent), var(--brand)); box-shadow:0 0 40px rgba(124,58,237,.35)}
+    .nav a{opacity:.9}
+    .nav-links{display:flex; gap:20px; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); padding:12px 16px; border-radius:12px; transition:.3s; font-weight:600}
+    .btn:hover{transform:translateY(-1px); border-color:rgba(167,139,250,.7); box-shadow:var(--shadow)}
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-color: transparent;
+      color: var(--text); /* Ensure text is visible on the gradient */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* A more subtle shadow */
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px); /* Slight lift on hover */
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35); /* Enhanced shadow on hover */
+    }
+
+    /* Hero */
+    .hero{padding:64px 0 48px; position:relative}
+    .hero .container{display:grid; grid-template-columns: 1.2fr 1fr; gap:40px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(167,139,250,.35); background:rgba(124,58,237,.12); border-radius:999px; color:#e9d5ff; font-weight:600; letter-spacing:.2px}
+    .title{font-family:Outfit, Inter, sans-serif; font-size: clamp(34px, 6vw, 64px); line-height:1.05; margin:16px 0 8px}
+    .subtitle{font-size: clamp(16px, 2.3vw, 20px); color:var(--muted)}
+    .hero-cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+    .stats{display:flex; gap:22px; margin-top:26px; flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); padding:12px 16px; border-radius:12px; font-weight:700}
+
+    .illustration{position:relative; aspect-ratio: 4 / 3; border-radius:20px; border:1px solid rgba(148,163,184,.18); overflow:hidden; background:radial-gradient(800px 500px at 30% 10%, rgba(167,139,250,.18), transparent 50%), linear-gradient(180deg, rgba(2,6,23,.8), rgba(2,6,23,.4)); box-shadow:var(--shadow)}
+    .orbs{position:absolute; inset:0; pointer-events:none}
+    .orb{position:absolute; width:160px; height:160px; border-radius:50%; filter:blur(30px); opacity:.6}
+    .orb.p1{left:-40px; top:10%; background:#22d3ee44}
+    .orb.p2{right:-30px; bottom:10%; background:#7c3aed44}
+    .orb.p3{left:40%; top:-40px; background:#a78bfa33}
+    .hero-mock{position:absolute; inset:20px; border-radius:14px; background:rgba(2,6,23,.6); border:1px solid rgba(148,163,184,.25); padding:16px; display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .mock-card{border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); padding:12px}
+    .chip{display:inline-flex; gap:8px; align-items:center; background:rgba(124,58,237,.18); color:#ddd6fe; border:1px solid rgba(167,139,250,.4); padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700}
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-title{font-family:Outfit, Inter, sans-serif; font-size: clamp(26px, 3.2vw, 42px); margin:0 0 8px}
+    .section-desc{color:var(--muted); max-width:800px}
+
+    .feature-grid{display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:18px; margin-top:28px}
+    .feature{border:1px solid rgba(148,163,184,.18); background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); border-radius:16px; padding:18px; position:relative; overflow:hidden}
+    .feature .icon{width:40px; height:40px; display:grid; place-items:center; border-radius:12px; background:rgba(124,58,237,.2); border:1px solid rgba(167,139,250,.35); margin-bottom:10px}
+    .feature h4{margin:6px 0 6px}
+    .feature p{color:var(--muted)}
+    .feature::after{content:""; position:absolute; inset:auto -30% -40% auto; width:240px; height:240px; background:radial-gradient(closest-side, rgba(124,58,237,.15), transparent 70%)}
+
+    /* How it works */
+    .steps{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-top:26px}
+    .step{background:rgba(255,255,255,.04); border:1px solid rgba(148,163,184,.2); border-radius:16px; padding:18px}
+
+    /* Creator & User blocks */
+    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:start}
+    .card{border:1px solid rgba(148,163,184,.18); background:rgba(255,255,255,.03); border-radius:16px; padding:20px}
+
+    /* Roadmap */
+    .timeline{position:relative; margin-top:24px}
+    .timeline::before{content:""; position:absolute; left:20px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, var(--brand), transparent)}
+    .milestone{display:grid; grid-template-columns:46px 1fr; gap:12px; padding:10px 0}
+    .dot{width:16px; height:16px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 6px rgba(124,58,237,.18); margin-top:4px}
+
+    /* CTA band */
+    .cta{background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.2)); border:1px solid rgba(148,163,184,.25); border-radius:20px; padding:22px; display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center}
+    .input{display:flex; gap:10px}
+    input[type=email]{flex:1; padding:14px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:rgba(2,6,23,.6); color:var(--text)}
+    input[type=email]:focus{outline:none; box-shadow:var(--ring); border-color:#a78bfa}
+
+    /* FAQ */
+    .faq{display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:20px}
+    .faq-item{border:1px solid rgba(148,163,184,.2); border-radius:14px; background:rgba(255,255,255,.03); overflow:hidden}
+    .faq-q{padding:16px 18px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center}
+    .faq-a{padding:0 18px 16px; color:var(--muted); display:none}
+
+    /* Footer */
+    footer{padding:40px 0 60px; border-top:1px solid rgba(148,163,184,.15); color:#94a3b8}
+    .footer-grid{display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:18px}
+    .legal{font-size:12px; color:#64748b; margin-top:16px}
+
+    /* Utilities */
+    .tag{display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px; background:rgba(34,211,238,.12); border:1px solid rgba(34,211,238,.35); color:#cffafe; font-weight:700; font-size:12px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(148,163,184,.2)}
+    .muted{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .container{grid-template-columns:1fr}
+      .cta{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .feature-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .feature-grid, .steps, .faq, .footer-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .hero{padding-top:36px}
+    }
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform:translateY(12px); transition:.7s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Toast */
+    .toast{position:fixed; right:16px; bottom:16px; background:rgba(2,6,23,.88); color:var(--text); padding:12px 16px; border-radius:12px; border:1px solid rgba(148,163,184,.2); box-shadow:var(--shadow); display:none}
+    .toast.show{display:block}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Character Social</span>
+      </a>
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="#details">Internship Details</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#form">Apply Now</a>
+        <a href="#previous">Previous Interns</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="badge">🚀 Internship Opportunity</span>
+        <h1 class="title">Join Our Team as an <span style="color:var(--accent)">Intern</span>!</h1>
+        <p class="subtitle">Shape the future of Character Social and gain valuable experience.</p>
+        <div class="hero-cta">
+          <a href="#form" class="btn btn-primary">Apply Now</a>
+          <a href="#details" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="illustration" aria-hidden="true">
+        <div class="orbs">
+          <span class="orb p1"></span>
+          <span class="orb p2"></span>
+          <span class="orb p3"></span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80" alt="Interns working together">
+      </div>
+    </div>
+  </section>
+
+  <!-- Internship Details -->
+  <section id="details">
+    <div class="container reveal">
+      <h2 class="section-title">Internship Details</h2>
+      <p class="section-desc">We offer internships in various fields, providing hands-on experience and mentorship.</p>
+      <div class="feature-grid" style="margin-top:22px">
+        <div class="feature">
+          <div class="icon">💻</div>
+          <h4>Software Engineering</h4>
+          <p>Work on challenging projects and contribute to our platform.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🎨</div>
+          <h4>Design</h4>
+          <p>Create stunning visuals and user-friendly interfaces.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📣</div>
+          <h4>Marketing</h4>
+          <p>Help us spread the word and grow our community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits">
+    <div class="container reveal">
+      <h2 class="section-title">Benefits of Interships</h2>
+      <p class="section-desc">Get real-world experience, mentorship, and a chance to make a difference.</p>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="icon">📚</div>
+          <h4>Learning & Development</h4>
+          <p>Expand your knowledge and skills through hands-on projects.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🧑‍🏫</div>
+          <h4>Mentorship</h4>
+          <p>Receive guidance from experienced professionals in your field.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🚀</div>
+          <h4>Career Growth</h4>
+          <p>Gain valuable experience and build your professional network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="form">
+    <div class="container reveal">
+      <h2 class="section-title">Apply for Internship</h2>
+      <p class="section-desc">Fill out the form below to apply for an internship at Character Social.</p>
+      <form id="internship-form" class="input" novalidate>
+        <input type="text" placeholder="Your Name" aria-label="Your Name" required /><br><br>
+        <input type="email" placeholder="Enter your email" aria-label="Email address" required /><br><br>
+        <textarea placeholder="Why do you want to intern with us?" aria-label="Why do you want to intern with us?" required></textarea><br><br>
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Previous Interns -->
+  <section id="previous">
+    <div class="container reveal">
+      <h2 class="section-title">Our Previous Interns</h2>
+      <p class="section-desc">Meet some of our amazing former interns and see what they accomplished.</p>
+      <div class="two-col">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Jane Doe">
+          <h3 style="margin:10px 0">Jane Doe</h3>
+          <p class="muted">Software Engineering Intern</p>
+          <p class="muted">"My internship at Character Social was an incredible learning experience. I gained valuable skills and made lasting connections."</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b108e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="John Smith">
+          <h3 style="margin:10px 0">John Smith</h3>
+          <p class="muted">Design Intern</p>
+          <p class="muted">"I had the opportunity to work on exciting design projects and contribute to the company's vision."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="logo"></span><span>Character Social</span></div>
+        <p class="legal">© <span id="year"></span> Character Social. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="home.html#mission">Mission</a><br />
+        <a href="home.html#features">Features</a><br />
+        <a href="home.html#roadmap">Roadmap</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="mailto:hello@your-domain.com">Email</a><br />
+        <a href="home.html#waitlist">Join Waitlist</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      })
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement; const a = item.querySelector('.faq-a');
+        const open = a.style.display === 'block';
+        document.querySelectorAll('.faq-a').forEach(x => x.style.display = 'none');
+        document.querySelectorAll('.faq-q span').forEach(x => x.textContent = '＋');
+        if (!open){ a.style.display = 'block'; q.querySelector('span').textContent = '–'; }
+      })
+    })
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
